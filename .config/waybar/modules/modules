@@ -158,27 +158,6 @@
 	//"tooltip": true,
 	"tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
 },
-"idle_inhibitor": {
-	"tooltip": true,
-	"tooltip-format-activated": "Idle_inhibitor active",
-	"tooltip-format-deactivated": "Idle_inhibitor not active",
-	"format": "{icon}",
-	"format-icons": {
-		"activated": " ",
-		"deactivated": " ",
-	}
-},
-
-"gammastep": {
-	"tooltip": true,
-	"tooltip-format-activated": "gammastep active",
-	"tooltip-format-deactivated": "gammastep deactivated",
-	"format": "{icon}",
-	"format-icons": {
-		"activated": "🌙",
-		"deactivated": "🌤️",
-	}
-},
 
 
 "memory": {
@@ -210,7 +189,6 @@
 		"mopidy": "",
 		"mpv": "󰐹",
 		"spotify": "",
-		"vlc": "󰕼",
 	},
 	"status-icons": {
 		"paused": "󰐎",

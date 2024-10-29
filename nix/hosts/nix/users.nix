@@ -1,10 +1,11 @@
-{ pkgs, username, ... }:
-
-let
-  inherit (import ./variables.nix) gitUsername;
-in
 {
-  users = { 
+  pkgs,
+  username,
+  ...
+}: let
+  inherit (import ./variables.nix) gitUsername;
+in {
+  users = {
     users."${username}" = {
       homeMode = "755";
       isNormalUser = true;
@@ -15,30 +16,32 @@ in
         "libvirtd"
         "scanner"
         "lp"
-        "video" 
-        "input" 
+        "video"
+        "input"
         "audio"
         "docker"
         "wireshark"
+        "dialout"
       ];
-    
-    # define user packages here
-    packages = with pkgs; [
+
+      # define user packages here
+      packages = with pkgs; [
       ];
     };
-    
+
     # create groups that arent created
     groups = {
-      wireshark = { };
-
+      scanner = {};
+      libvirtd = {};
+      wireshark = {};
+      dialout = {};
     };
 
     defaultUserShell = pkgs.fish;
-  }; 
- 
+  };
+
   programs.fish.enable = true;
- 
-  environment.shells = with pkgs; [ fish ];
-  environment.systemPackages = with pkgs; [ fzf ]; 
-    
+
+  environment.shells = with pkgs; [fish];
+  environment.systemPackages = with pkgs; [fzf];
 }

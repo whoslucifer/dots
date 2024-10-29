@@ -42,34 +42,6 @@
 	"tooltip-format": "nwg Look",
 },
 
-// Hypridle inhibitor
-"custom/hypridle": {
-	"format": "󱫗 ",
-	"return-type": "json",
-	"escape": true,
-	"exec-on-event": true,
-	"interval": 60,
-	"exec": "$HOME/.config/hypr/scripts/display/hypridle.sh status",
-	"on-click": "$HOME/.config/hypr/scripts/display/hypridle.sh toggle",
-	"on-click-right": "hyprlock"
-},
-
-// gammastep
-"custom/gammastep": {
-	"format": "{icon}",
-  "format-icons": {
-    "activated": "🌙",
-    "deactivated": "🌤️",
-  },
-	"return-type": "json",
-	"escape": true,
-	"exec-on-event": true,
-	"interval": 60,
-	//"exec": "$HOME/.config/hypr/scripts/display/hypridle.sh status",
-	"on-click": "$HOME/.config/hypr/scripts/display/gammastep.sh",
-},
-
-
 
 "custom/menu": {
 	"format": "",

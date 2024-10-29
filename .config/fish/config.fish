@@ -31,7 +31,15 @@ end
 # end
 #
 
-set -U fish_user_paths /home/asherah/go/bin $fish_user_paths
+# set -Ux ANDROID_HOME /home/asherah/Android/Sdk
+ 
+set -Ux MSF_DATABASE_CONFIG /home/asherah/.msf4/database.yml
+
+#set -Ux fish_user_paths $ANDROID_HOME/tools $fish_user_paths
+
+# set -Ux fish_user_paths $ANDROID_HOME/platform-tools $fish_user_paths 
+
+set -Ux fish_user_paths /home/asherah/go/bin $fish_user_paths
 
 fish_add_path /home/asherah/.spicetify
 

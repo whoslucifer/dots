@@ -1,28 +1,28 @@
 {
   description = "Hansen's Nix Setup"; 
   	
-  inputs = {
-  	  nixpkgs.url = "nixpkgs/nixos-unstable";
+   inputs = {
+  	nixpkgs.url = "nixpkgs/nixos-unstable";
+	
+	hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
-	    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-      spicetify-nix = {
+        spicetify-nix = {
           url = "github:Gerg-L/spicetify-nix";
           inputs.nixpkgs.follows = "nixpkgs";
-      };
+        };
 
-	    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+	distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
 
-      home-manager = {
-          url = "github:nix-community/home-manager";
+        home-manager = {
+          url = "github:nix-community/home-manager/release-24.05";
           inputs.nixpkgs.follows = "nixpkgs";
-      };
+        };
 
 
    };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
-  let
+   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+   let
           system = "x86_64-linux";
           host = "nix";
           username = "asherah";
@@ -34,8 +34,8 @@
        	      };
           };
 
-  in
-  {
+   in
+   {
 	        nixosConfigurations = {
             "${host}" = nixpkgs.lib.nixosSystem rec {
 		            specialArgs = { 

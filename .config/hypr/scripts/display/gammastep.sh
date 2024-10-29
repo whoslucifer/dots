@@ -1,34 +1,22 @@
 #!/bin/bash
+# This is for custom version of waybar idle_inhibitor which activates / deactivates hypridle instead
 
-# Function to check if gammastep is running
-is_running() {
-    # Check for any gammastep process
-    pgrep -f "gammastep" > /dev/null
-}
+PROCESS="gammastep"
 
-# Function to start gammastep
-start_gammastep() {
-    echo "Starting gammastep..."
-    gammastep &
-    echo "gammastep started with PID: $!"
-}
-
-# Function to stop gammastep
-stop_gammastep() {
-    echo "Stopping gammastep..."
-    pkill -f "gammastep"
-}
-
-# Check if gammastep is running
-if is_running; then
-    echo "gammastep is already running. Stopping it."
-    stop_gammastep
+if [[ "$1" == "status" ]]; then
+    sleep 1
+    if pgrep -x "$PROCESS" >/dev/null; then
+        echo '{"text": "RUNNING", "class": "active", "tooltip": "idle_inhibitor NOT ACTIVE\nLeft Click: Activate\nRight Click: Lock Screen"}'
+    else
+        echo '{"text": "NOT RUNNING", "class": "notactive", "tooltip": "idle_inhibitor is ACTIVE\nLeft Click: Deactivate\nRight Click: Lock Screen"}'
+    fi
+elif [[ "$1" == "toggle" ]]; then
+    if pgrep -x "$PROCESS" >/dev/null; then
+        pkill "$PROCESS"
+    else
+        "$PROCESS"
+    fi
 else
-    echo "gammastep is not running. Starting it."
-    start_gammastep
+    echo "Usage: $0 {status|toggle}"
+    exit 1
 fi
-
-# Check the current running instances of gammastep
-echo "Current running instances of gammastep:"
-ps -ef | grep gammastep
-

@@ -42,7 +42,6 @@
 
 "modules-right": [
 	"network#speed",
-  "gammastep",
 	"group/connections",
 	"custom/separator#line",
 	"tray",

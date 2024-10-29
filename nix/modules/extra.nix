@@ -2,14 +2,7 @@
 {
   
   # Extra Module Options
-  drivers.amdgpu.enable = true;
   drivers.intel.enable = true;
-  drivers.nvidia.enable = false;
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
-  };
 
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
@@ -72,10 +65,11 @@
   };
 
   
-  # OpenGL
+  /*  # OpenGL
   hardware.graphics = {
     enable = true;
-  };
+  }; 
+  */
 
   console.keyMap = "us";
 

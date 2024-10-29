@@ -47,7 +47,6 @@
 "group/connections": {
 	"orientation": "inherit",
 	"modules": [
-    "idle_inhibitor",
 		"network/speed",
 	]
 },

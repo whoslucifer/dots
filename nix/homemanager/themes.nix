@@ -15,7 +15,7 @@
       enable = true;
 
       cursorTheme = {
-          name = "Bibata-Modern-Ice";
+          name = "Bibata-Original-Ice";
           package = pkgs.bibata-cursors;
       };
 
@@ -25,8 +25,8 @@
       };
 
       iconTheme = {
-          name = "Adwaita-Icon-Theme";
-          package = pkgs.adwaita-icon-theme;
+          name = "Papirus-Icon-Theme";
+          package = pkgs.papirus-icon-theme;
       };
 
     };

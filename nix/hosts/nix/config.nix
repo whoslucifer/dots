@@ -1,28 +1,31 @@
 # this is the main default config
-
-{ config, pkgs, host, username, options, lib, inputs, system, ...}: let
-  
+{
+  config,
+  pkgs,
+  host,
+  username,
+  options,
+  lib,
+  inputs,
+  system,
+  ...
+}: let
   inherit (import ./variables.nix) keyboardLayout;
   python-packages = pkgs.python3.withPackages (
     ps:
       with ps; [
         requests
         pyquery # needed for hyprland-dots Weather script
-        ]
-    );
-  
-  in {
+      ]
+  );
+in {
   imports = [
-
-    ./hardware.nix
+    ./hardware-configuration.nix
     ./users.nix
-    ../../system/misc/amd-drivers.nix
-    ../../system/misc/nvidia-drivers.nix
-    ../../system/misc/nvidia-prime-drivers.nix
     ../../system/misc/intel-drivers.nix
     ../../system/misc/vm-guest-services.nix
     ../../system/misc/local-hardware-clock.nix
-    
+
     ../../system/locales.nix
     ../../system/networking.nix
     ../../system/boot.nix
@@ -41,13 +44,14 @@
 
     ../../modules/developer/developer.nix
 
+    ../../modules/pentester/pentester.nix
+    ../../modules/pentester/blueducky.nix
+
     ../../modules/productivity.nix
     ../../modules/socials.nix
     ../../modules/media.nix
-    ../../modules/pentester.nix
     ../../modules/utils.nix
     ../../modules/spicetify.nix
-
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -57,17 +61,15 @@
     mutableUsers = true;
   };
 
-
   # Python Packages for Hyprland scripts
-  environment.systemPackages = (with pkgs; [
-    vim
-    neovim   
-
-  ]) ++ [
-    python-packages
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      vim
+    ])
+    ++ [
+      python-packages
+    ];
 
   # System version
   system.stateVersion = "24.05";
 }
-

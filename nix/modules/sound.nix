@@ -1,34 +1,20 @@
-{ config, pkgs, ... }:
 {
-    # Bluetooth
-    hardware = {
-  	  bluetooth = {
-	       enable = true;
-	       powerOnBoot = true;
-	       settings = {
-		          General = {
-		            Enable = "Source,Sink,Media,Socket";
-		            Experimental = true;
-		          
-              };
-         };
-      };
-    };
-   
+  config,
+  pkgs,
+  ...
+}: {
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    jack.enable = true;
+  };
 
-    # pipewire
-    hardware.pulseaudio = {
-        enable = false;
-        extraModules = [ "module-bluetooth-policy" "module-bluetooth-discover" ];
-    };
+  hardware.bluetooth = {
+    enable = true;
+  };
 
-    environment.systemPackages = with pkgs; [
-        pulseaudio
-        bluez
-        bluez-tools
-        gnome-control-center
-
-    ];
-
+  environment.systemPackages = with pkgs; [
+    easyeffects
+  ];
 }
-

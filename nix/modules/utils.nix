@@ -29,7 +29,6 @@
     librsvg
     foot 
     kitty
-    wezterm
     ranger
     tmux
     fastfetch

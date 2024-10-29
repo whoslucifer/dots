@@ -1,4 +1,4 @@
-{ config, host, options, ... }:
+{ config, pkgs, host, options, ... }:
 
 { 
   
@@ -6,6 +6,7 @@
 
     networkmanager = {
         enable = true;
+        #dns = "dnsmasq";
 
     };
 
@@ -32,7 +33,7 @@
     };
 
     firewall = {
-        enable = true;
+        enable = false;
         allowedTCPPorts = [ ];
         allowedUDPPorts = [ ];
     };
@@ -55,6 +56,27 @@
         ]; */
     };
 
+
   };
+
+  # services.dnsmasq.enable = true;
+
+  /* services.create_ap = {
+      enable = true;
+      settings = {
+          INTERNET_IFACE = "eth0";
+          WIFI_IFACE = "wlan0";
+          SSID = "biiitch";
+          PASSPHRASE = "calculAss";
+       };
+  }; */
+  
+  environment.systemPackages = with pkgs; [
+      openvpn
+      # dnsmasq
+      # hostapd
+      # linux-wifi-hotspot
+  ];
+
 }
 
